@@ -1,11 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, send_from_directory
 import os
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return send_from_directory('static', "virus.txt", as_attachment=True)
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
